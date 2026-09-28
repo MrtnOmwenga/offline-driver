@@ -1,0 +1,117 @@
+{
+  "name": "offline-driver",
+  "version": "0.1.0",
+  "description": "Offline-first writes and reads for React Native: a durable outbox queue, a drain loop that tells a dropped connection from a rejected request, and a synchronous SQLite layer.",
+  "license": "MIT",
+  "author": "Martin Omwenga",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrtnOmwenga/offline-driver.git"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./sqlite": {
+      "import": {
+        "types": "./dist/sqlite/index.d.ts",
+        "default": "./dist/sqlite/index.js"
+      },
+      "require": {
+        "types": "./dist/sqlite/index.d.cts",
+        "default": "./dist/sqlite/index.cjs"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react/index.d.ts",
+        "default": "./dist/react/index.js"
+      },
+      "require": {
+        "types": "./dist/react/index.d.cts",
+        "default": "./dist/react/index.cjs"
+      }
+    },
+    "./react-native": {
+      "import": {
+        "types": "./dist/react-native/index.d.ts",
+        "default": "./dist/react-native/index.js"
+      },
+      "require": {
+        "types": "./dist/react-native/index.d.cts",
+        "default": "./dist/react-native/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/react": "^19.3.0",
+    "@vitest/coverage-v8": "^5.0.2",
+    "better-sqlite3": "^13.0.3",
+    "fast-check": "^4.10.2",
+    "jsdom": "^30.1.1",
+    "react": "^19.3.0",
+    "tsup": "^8.5.1",
+    "typescript": "~5.9",
+    "vitest": "^5.0.2"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "keywords": [
+    "offline",
+    "offline-first",
+    "react-native",
+    "expo",
+    "sqlite",
+    "outbox",
+    "queue",
+    "sync"
+  ],
+  "typesVersions": {
+    "*": {
+      "sqlite": [
+        "./dist/sqlite/index.d.ts"
+      ],
+      "react": [
+        "./dist/react/index.d.ts"
+      ],
+      "react-native": [
+        "./dist/react-native/index.d.ts"
+      ]
+    }
+  }
+}
