@@ -5,6 +5,10 @@ updates:
     schedule: { interval: monthly }
     groups:
       dev: { dependency-type: development }
+    ignore:
+      # A TypeScript major version is a migration, not a bump (7 fails the typecheck and tests).
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: monthly }
